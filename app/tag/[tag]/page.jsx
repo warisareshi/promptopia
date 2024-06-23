@@ -35,11 +35,11 @@ const TagPage = ({ params }) => {
 
   return (
     <>
-      <h1m className="text-center text-2xl font-medium">
-        These are the prompts found for{" "}
-        <span className="font-bold blue_gradient">
-          #{params.tag}
-        </span>
+      <h1m className="text-center text-2xl font-medium items-center">
+        {prompts.length > 0
+          ? `${prompts.length} found for`
+          : "No prompts found for"}{" "}
+        <span className="font-bold blue_gradient">#{params.tag}</span>
       </h1m>
       <div className="mt-16 prompt_layout">
         {prompts.map((prompt) => (

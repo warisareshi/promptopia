@@ -16,11 +16,16 @@ const Feed = () => {
 
   const router = useRouter();
 
-  const handleSearchChange = (e) => {}
-
   const handleTagClick = (tag) => {
     router.push(`/tag/${tag}`);
   } 
+
+  const search = (e) => {
+    e.preventDefault();
+    if (searchText) {
+      router.push(`/tag/${searchText}`);
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -33,15 +38,17 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form className="relative w-full text-center">
+      <form className="relative w-full text-center flex flex-row gap-2" onSubmit={search}>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Enter a tag (without #)"
           value={searchText}
-          onChange={handleSearchChange}
+          onChange={(e) => setSearchText(e.target.value)}
           required
           className="search_input peer"
         />
+
+        <button className="black_btn" type="submit">Search</button>
       </form>
 
       <PromptCards 
