@@ -9,9 +9,7 @@ const PromptCard = ({ prompt, handleEdit, handleDelete, handleTagClick }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
-
-  console.log(prompt)
-
+  
   const [copied, setCopied] = useState("");
 
   const handleProfileClick = () => {
